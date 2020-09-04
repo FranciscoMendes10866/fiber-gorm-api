@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:alpine
+    restart: always
+    container_name: gorm
+    ports:
+      - "8000:5432"
+    environment:
+      POSTGRES_USER: gorm
+      POSTGRES_PASSWORD: gorm
+      POSTGRES_DB: gorm
+    volumes:
+      - ./init:/gorm-entrypoint-initdb.d/
