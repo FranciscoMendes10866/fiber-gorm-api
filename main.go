@@ -17,7 +17,10 @@ import (
 func initDB() {
 	var err error
 	dsn := "host=localhost user=gorm password=gorm dbname=gorm port=8000 sslmode=disable"
-	database.DBConn, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	database.DBConn, err = gorm.Open(postgres.Open(dsn), &gorm.Config{
+		SkipDefaultTransaction: true,
+		PrepareStmt:            true,
+	})
 	if err != nil {
 		panic(err)
 	}
