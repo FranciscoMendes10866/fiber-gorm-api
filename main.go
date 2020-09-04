@@ -28,13 +28,9 @@ func initDB() {
 
 func main() {
 	app := fiber.New()
-
 	app.Use(cors.New())
 	app.Use(helmet.New())
-
 	initDB()
-
 	router.SetupRoutes(app)
-
 	app.Listen(3030)
 }
