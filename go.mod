@@ -3,9 +3,9 @@ module github.com/fiber-gorm-api
 go 1.15
 
 require (
-	github.com/gofiber/cors v0.2.2 // indirect
+	github.com/gofiber/cors v0.2.2
 	github.com/gofiber/fiber v1.14.5
-	github.com/gofiber/helmet v0.1.2 // indirect
+	github.com/gofiber/helmet v0.1.2
 	github.com/gofiber/jwt v0.2.0 // indirect
 	github.com/gofiber/logger v0.2.4
 	github.com/gorilla/schema v1.2.0 // indirect

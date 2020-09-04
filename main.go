@@ -7,7 +7,9 @@ import (
 
 	"github.com/fiber-gorm-api/database"
 	"github.com/fiber-gorm-api/router"
+	"github.com/gofiber/cors"
 	"github.com/gofiber/fiber"
+	"github.com/gofiber/helmet"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -26,6 +28,9 @@ func initDB() {
 
 func main() {
 	app := fiber.New()
+
+	app.Use(cors.New())
+	app.Use(helmet.New())
 
 	initDB()
 
