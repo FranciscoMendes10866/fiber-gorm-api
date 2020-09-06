@@ -3,6 +3,7 @@ module github.com/fiber-gorm-api
 go 1.15
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gofiber/cors v0.2.2
 	github.com/gofiber/fiber v1.14.5
 	github.com/gofiber/helmet v0.1.2
