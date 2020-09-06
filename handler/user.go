@@ -35,7 +35,7 @@ func SignUp(c *fiber.Ctx) {
 func SignIn(c *fiber.Ctx) {
 	// dbData response object
 	type UserData struct {
-		ID       uint   `json:"id"`
+		ID       int    `json:"id"`
 		Email    string `json:"email"`
 		Password string `json:"password"`
 	}

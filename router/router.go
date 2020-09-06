@@ -16,4 +16,5 @@ func SetupRoutes(app *fiber.App) {
 
 	sponsors := api.Group("/sponsors")
 	sponsors.Get("/", guards.VerifyAuth(), handler.GetSponsors)
+	sponsors.Post("/", guards.VerifyAuth(), handler.CreateSponsor)
 }
