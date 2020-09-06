@@ -48,3 +48,35 @@ func CreateSponsor(c *fiber.Ctx) {
 	create := db.Create(sponsors)
 	c.JSON(create)
 }
+
+func CountTotalSponsors(c *fiber.Ctx) {
+	var count int64
+	db := database.DBConn
+	sponsors := new(model.Sponsor)
+	c.BodyParser(sponsors)
+	db.Model(sponsors).Count(&count)
+	c.JSON(fiber.Map{
+		"total": &count,
+	})
+}
+
+func GetUserSponsors(c *fiber.Ctx) {
+	// selects the filds I want in every single object
+	type Sponsor struct {
+		ID     int
+		Name   string
+		Link   string
+		Amount int
+		UserID int
+	}
+	db := database.DBConn
+	var sponsors []Sponsor
+	// token payload
+	user := c.Locals("user").(*jwt.Token)
+	claims := user.Claims.(jwt.MapClaims)
+	tokenID := claims["id"].(float64)
+	var IDtoInt int = int(tokenID)
+	// query
+	db.Where("user_id = ?", IDtoInt).Find(&sponsors)
+	c.JSON(&sponsors)
+}
