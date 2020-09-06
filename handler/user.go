@@ -74,7 +74,7 @@ func SignIn(c *fiber.Ctx) {
 		claims["email"] = user.Email
 		claims["id"] = user.ID
 		// Generate encoded token and send it as response.
-		loginToken, err := token.SignedString([]byte("SECRET"))
+		loginToken, err := token.SignedString([]byte("FIBERGORM"))
 		if err != nil {
 			c.SendStatus(fiber.StatusInternalServerError)
 			return
