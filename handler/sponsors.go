@@ -80,3 +80,18 @@ func GetUserSponsors(c *fiber.Ctx) {
 	db.Where("user_id = ?", IDtoInt).Find(&sponsors)
 	c.JSON(&sponsors)
 }
+
+func DeleteSingleSponsor(c *fiber.Ctx) {
+	id := c.Params("id")
+	db := database.DBConn
+	var sponsor model.Sponsor
+	db.First(&sponsor, id)
+	if sponsor.Name == "" {
+		c.JSON(fiber.Map{"err": "An error occored."})
+		return
+	}
+	db.Delete(&sponsor)
+	c.JSON(fiber.Map{
+		"msg": "Was deleted.",
+	})
+}

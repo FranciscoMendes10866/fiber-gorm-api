@@ -19,4 +19,5 @@ func SetupRoutes(app *fiber.App) {
 	sponsors.Get("/user", guards.VerifyAuth(), handler.GetUserSponsors)
 	sponsors.Post("/", guards.VerifyAuth(), handler.CreateSponsor)
 	sponsors.Get("/total", guards.VerifyAuth(), handler.CountTotalSponsors)
+	sponsors.Delete("/:id", guards.VerifyAuth(), handler.DeleteSingleSponsor)
 }
